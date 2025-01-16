@@ -2,111 +2,133 @@
     {
         "name": "The Apex - Blacktop",
         "thumbnail": "/maps-thumbnails/The Apex - Blacktop.jpg",
+        "description": "Standard map by SimpleShark. As seen at The Apex, the $10,000 LAN hosted by Lawler and Lethamyr.",
         "download": "https://drive.google.com/file/d/1QHOhIjlxBa2gxJTPTQz1pm1vgIh0vbjG/view?usp=sharing"
     },
     {
         "name": "The Apex - Vertigo",
         "thumbnail": "/maps-thumbnails/The Apex - Vertigo.jpg",
+        "description": "The Tall One by MissMacho. As seen at The Apex, the $10,000 LAN hosted by Lawler and Lethamyr.",
         "download": "https://drive.google.com/file/d/1AmvBCUHy1mo9Ps8Y6HNr9wOQU05uBmS4/view?usp=sharing"
     },
     {
         "name": "The Apex - Shatter",
         "thumbnail": "/maps-thumbnails/The Apex - Shatter.jpg",
+        "description": "Wallbreaker by glhglh (dropshot). As seen at The Apex, the $10,000 LAN hosted by Lawler and Lethamyr.",
         "download": "https://drive.google.com/file/d/1S7oLQthIXL27ntE51rE7A1rm9zd5fR2g/view?usp=sharing"
     },
     {
         "name": "The Pyramid",
         "thumbnail": "/maps-thumbnails/The Pyramid.jpg",
+        "description": "No Flat Surfaces here as you try to score on a slanted surface!",
         "download": "https://drive.google.com/file/d/17NVCE6V7VVtlNACsMOrqYH9kheeBzjK1/view?usp=sharing"
     },
     {
         "name": "Stellar Stadium",
         "thumbnail": "/maps-thumbnails/Stellar Stadium.jpg",
+        "description": "A totally stellar map for some oldschool Rocket League",
         "download": "https://drive.google.com/file/d/1-dVGhWJ8NitOFzNGgktUFQBLaLIV3w0H/view?usp=sharing"
     },
     {
         "name": "Arabian Nights",
         "thumbnail": "/maps-thumbnails/Arabian Nights.jpg",
+        "description": "A Middle-Eastern standard Rocket League map!",
         "download": "https://drive.google.com/file/d/1Hg3foTUtDJolGmEKJkzdUlfT30nw8NCh/view?usp=sharing"
     },
     {
         "name": "Egyptian Parkour",
         "thumbnail": "/maps-thumbnails/Egyptian Parkour.jpg",
+        "description": "An entire adventure game inside Rocket League",
         "download": "https://drive.google.com/file/d/1A_BjS9PLlIRhpHZJZcaFvWzDJ3TnxATE/view?usp=sharing"
     },
     {
         "name": "Air Dribble Arena",
         "thumbnail": "/maps-thumbnails/Air Dribble Arena.jpg",
+        "description": "Air dribble from the ramp in the middle to the elevated goals!",
         "download": "https://drive.google.com/file/d/1GBVT8wg_R42JodQwlTcub_ds6adFMK8F/view?usp=sharing"
     },
     {
         "name": "Hoops Stadium",
         "thumbnail": "/maps-thumbnails/Hoops Stadium.jpg",
+        "description": "A new spin on Rocket League Hoops!",
         "download": "https://drive.google.com/file/d/1tNNUVSrvDhIC5TB5q0kCTA5CvwDyCcOh/view?usp=sharing"
     },
     {
         "name": "Graverobber",
         "thumbnail": "/maps-thumbnails/Graverobber.jpg",
+        "description": "Score in the net to open the goals in the floor!",
         "download": "https://drive.google.com/file/d/1kpynWxpFBPPq7wmS9SucIezyd_q9v88Z/view?usp=sharing"
     },
     {
         "name": "Hoopskee",
         "thumbnail": "/maps-thumbnails/Hoopskee.jpg",
+        "description": "Score in all 5 goals in order to win!",
         "download": "https://drive.google.com/file/d/1pHL_FaZameTGyigMNd4Gm52WL6bHNIgx/view?usp=sharing"
     },
     {
         "name": "Medieval Chainball",
         "thumbnail": "/maps-thumbnails/Medieval Chainball.jpg",
+        "description": "A medieval version of Mr.Swaggles' Bead Maze!",
         "download": "https://drive.google.com/file/d/1wu4EsI7Wqi8DyohOTHJqmbCFb-z6OId5/view?usp=sharing"
     },
     {
         "name": "Neon Heights Rings",
         "thumbnail": "/maps-thumbnails/Neon Heights Rings.jpg",
+        "description": "20 aerial levels in a Neon City",
         "download": "https://drive.google.com/file/d/1k_vtZ75K4nK1kFkky8p8PGUQ017udYwc/view?usp=sharing"
     },
     {
         "name": "Ice Ring",
         "thumbnail": "/maps-thumbnails/Ice Ring.jpg",
+        "description": "Train your aerial car control in this MASSIVE rings map. Can you solve the hidden easter egg?",
         "download": "https://drive.google.com/file/d/1vbgEXT4hZv0ta-Cu2ew_b3FyDf68InPQ/view?usp=sharing"
     },
     {
         "name": "Dribble Challenge Remastered",
         "thumbnail": "/maps-thumbnails/Dribble Challenge Remastered.jpg",
+        "description": "Remastered Dribble Challenge 1",
         "download": "https://drive.google.com/file/d/1RmQdyp0oYpr2ldKN6odAbTgOTYpUoAqy/view?usp=sharing"
     },
     {
         "name": "Portal",
         "thumbnail": "/maps-thumbnails/Portal.jpg",
+        "description": "Bringing Portal 2 to life in Rocket League with working portals!",
         "download": "https://drive.google.com/file/d/1thLV089Y_fmQZ-MoCua88zhPPWxBZRCw/view?usp=sharing"
     },
     {
         "name": "Clocktower",
         "thumbnail": "/maps-thumbnails/Clocktower.jpg",
+        "description": "Rocket League inside a giant clock tower!",
         "download": "https://drive.google.com/file/d/1d--owGqmJTCHt1eEWXSZAq0vFjc5J4PZ/view?usp=sharing"
     },
     {
         "name": "DecaBall",
         "thumbnail": "/maps-thumbnails/DecaBall.jpg",
+        "description": "Score in all 5 goals in order to win!",
         "download": "https://drive.google.com/file/d/1Vf6eZIrhmq0mh29q94X_xj4sKdVRTJO4/view?usp=sharing"
     },
     {
         "name": "Capture the Flag Winter",
         "thumbnail": "/maps-thumbnails/Capture the Flag Winter.jpg",
+        "description": "Capture the Flag Winter re-skin!",
         "download": "https://drive.google.com/file/d/1I95zQC2EaNB8AH-90FTlPSACT4IJ4aqN/view?usp=sharing"
     },
     {
         "name": "Go-Kart Mania",
         "thumbnail": "/maps-thumbnails/Go-Kart Mania.jpg",
+        "description": "Go-Karting with 10 different maps in 1!",
         "download": "https://drive.google.com/file/d/1o31Vwy_oWFzfszqzB896T7oTAcBPZk1i/view?usp=sharing"
     },
     {
-        "name": "Medieval Jousting Sumo",
+        "name": "Medieval Jousting (Sumo)",
         "thumbnail": "/maps-thumbnails/Medieval Jousting Sumo.jpg",
+        "description": "This is a 1 on 1 game mode where you actually wear a giant lance as you try and knock your opponent into the water. Careful of the thin platform!",
         "download": "https://drive.google.com/file/d/1Yq3-LKQRf0Fr1dkInPJrO9TPWbkSs2A4/view?usp=sharing"
     },
     {
         "name": "Among Us in Rocket League",
         "thumbnail": "/maps-thumbnails/Among Us in Rocket League.jpg",
+        "description": "A fully working Among Us game in Rocket League!",
         "download": "https://drive.google.com/file/d/17WQ-SIfOCzr89-PpGmhDnrBBiSnJdVUc/view?usp=sharing"
     }
 ]
