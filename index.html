@@ -224,6 +224,8 @@
 
             // Fetch the map data from an API
             async function fetchData() {
+                document.getElementById("loader-container").style.display = "block";
+                document.getElementById("error-message").style.display = "none";
                 try {
                     const response = await fetch("https://rl-custom-maps.github.io/maps-api.json");
                     mapData = await response.json();
@@ -240,10 +242,9 @@
 
             function renderMaps() {
                 const mapGrid = document.getElementById("mapGrid");
-                const loading_spinner = document.getElementById("loader-container");
                 const pagination = document.getElementById("pagination");
 
-                loading_spinner.style.display = "none";
+                mapGrid.innerHTML = "";
                 pagination.innerHTML = "";
 
                 const startIndex = (currentPage - 1) * mapsPerPage;
@@ -260,7 +261,7 @@
                         <img src="${map.thumbnail}" alt="${map.name}" loading="lazy">
                         <div class="card-body">
 							<p class="card-text">${map.description}</p>
-                            <a href="${map.download}" class="btn btn-primary" target="_Blank">Download</a>
+                            <a href="${map.download}" class="btn btn-primary" target="_Blank">Download Map</a>
                         </div>
                     </div>
                 `;
