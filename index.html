@@ -27,7 +27,7 @@
             padding: 20px;
         }
         .search-bar {
-            max-width: 400px;
+            min-width: 100%;
         }
         .search-bar input {
             width: 100%;
@@ -184,10 +184,16 @@
                 </ol>
             </div>
             <div class="tab-pane fade" id="step2" role="tabpanel">
-                <h2 class="mt-3">Step 2: Choose Your Maps</h2>
-                <div class="search-bar mb-3">
+			<div class="row">
+			<div class="col-12 col-sm-7"><h2 class="mt-3">Step 2: Choose Your Maps</h2>
+			</div>
+			<div class="col-12 col-sm-5"><div class="search-bar mb-3 mt-4 float-end">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search maps...">
                 </div>
+			</div>
+			</div>
+                
+                
                 <div class="row" id="mapGrid">
                     <!-- Loader will show here until data is loaded -->
                     <div id="loader-container" class="loader-container">
