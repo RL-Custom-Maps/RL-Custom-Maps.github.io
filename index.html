@@ -192,24 +192,48 @@
                 background-color: #d32f2f;
             }
 
-            #mapGrid {
-                transition: opacity 0.3s ease;
-                min-height: 400px;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 20px;
-                justify-content: center;
+            #credits {
+                float: right;
+				margin-right: 20px;
             }
 
             .hidden {
                 visibility: hidden;
             }
 
+            #mapGrid {
+                transition: opacity 0.3s ease;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+
             #mapGrid .col-md-3 {
-                flex: 1 1 calc(33.333% - 20px);
-                max-width: calc(33.333% - 20px);
+                flex: 1 1 calc(100% - 20px);
+                max-width: calc(100% - 20px);
                 display: flex;
             }
+			
+			@media (min-width: 768px) {
+                #mapGrid .col-md-3 {
+					flex: 1 1 calc(50% - 15px); /* For tablets and larger phones */
+					max-width: calc(50% - 15px);
+                }
+				#mapGrid {
+					gap: 10px;
+				}
+            }
+			
+			@media (min-width: 992px) {
+				#mapGrid .col-md-3 {
+					flex: 1 1 calc(33.333% - 15px); /* For medium devices */
+					max-width: calc(33.333% - 15px);
+				}
+				#mapGrid {
+					gap: 10px;
+				}
+			}
 
             .card,
             .card-body {
@@ -219,44 +243,58 @@
                 flex-grow: 1;
             }
 
-            .card-body {
-                align-items: center;
+            .card-footer {
+                align-items: center!important;
+				width: 100%;
             }
 
             .btn-download {
                 margin-top: auto;
                 position: relative;
                 bottom: 0;
+				vertical-align: inherit;
+            }
+
+            .help-link {
+                color: #f44336;
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                margin-top: 10px;
+				margin-left: 20px;
+            }
+
+            .help-link:hover {
+                color: #f44336;
+            }
+
+            .help-link:hover span {
+                border-bottom: 2px dashed #f44336;
+				padding-bottom:1px;
+            }
+
+            .help-link svg {
+                margin-right: 3px;
             }
         </style>
     </head>
     <body class="pb-5 mb-5">
         <nav class="navbar navbar-expand-lg">
             <div class="container">
-                <div class="col-12 col-sm-6">
+                <div class="col-11">
                     <a class="navbar-brand" href="/"><img height="32" alt="Rocket League Logo" src="rl-logo.svg" width="73" /> <span>Custom Maps</span></a>
                 </div>
-                <div class="col-12 col-sm-6">
-                    <button class="btn btn-outline-success text-white mx-2" id="step1-tab" type="button">How to Install</button>
-                    <button class="btn btn-outline-success text-white mx-2" id="step2-tab" type="button">Download Maps</button>
+                <div class="col-1">
+                    <a href="javascript:void()" id="credits">
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00bcd4" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+							<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+						</svg>
+					</a>
                 </div>
             </div>
         </nav>
 
         <div class="container mt-2 mb-5">
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="step1" role="tabpanel">
-                    <h2 class="mt-3">How to install and play custom maps?</h2>
-                    <p><a href="#" class="btn btn-primary">Download Map Loader Software</a></p>
-                    <p><a href="#" class="btn btn-primary">Download Custom Map Assets</a></p>
-                    <p>Installation Instructions:</p>
-                    <ol>
-                        <li>Download the files above.</li>
-                        <li>Run the Map Loader installer and follow the prompts.</li>
-                        <li>Extract the Custom Map Assets to your Rocket League directory.</li>
-                    </ol>
-                </div>
-                <div class="tab-pane fade show active" id="step2" role="tabpanel">
                     <div class="row mb-3">
                         <div class="col-12 col-sm-7"><h2 class="mt-3">Download Custom RL Maps</h2></div>
                         <div class="col-12 col-sm-5">
@@ -276,6 +314,23 @@
                     <div id="error-message" class="error-message mt-5 pt-4" style="display: none;">
                         <p>An error occured while loading maps. Please try again.</p>
                         <button class="reload-btn" onclick="fetchData()">Retry Loading</button>
+                    </div>
+                </div>
+		
+		<!-- How to Install and Play Popup -->
+        <div class="modal fade" id="installModal" tabindex="-1" aria-labelledby="installModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="installModalLabel">How to Install and Play Custom Maps</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ol>
+                            <li>Download the files above.</li>
+                            <li>Run the Map Loader installer and follow the prompts.</li>
+                            <li>Extract the Custom Map Assets to your Rocket League directory.</li>
+                        </ol>
                     </div>
                 </div>
             </div>
@@ -298,7 +353,6 @@
                     filteredMapData = [...mapData];
                     renderMaps();
                     document.getElementById("loader-container").style.display = "none";
-                    document.getElementById("error-message").style.display = "none";
                 } catch (error) {
                     console.error("Error fetching data:", error);
                     document.getElementById("loader-container").style.display = "none";
@@ -325,14 +379,26 @@
                         const mapElement = document.createElement("div");
                         mapElement.classList.add("col-md-3", "mb-4");
                         mapElement.innerHTML = `
-            <div class="card">
-                <h5 class="card-header">${map.name}</h5>
-                <img src="${map.thumbnail}" alt="${map.name}" loading="lazy">
-                <div class="card-body">
-                    <p class="card-text">${map.description}</p>
-                    <a href="${map.download}" class="btn btn-primary btn-download" target="_Blank">Download Map</a>
-                </div>
-            </div>`;
+							<div class="card">
+								<h5 class="card-header">${map.name}</h5>
+								<img src="${map.thumbnail}" alt="${map.name}" loading="lazy">
+								<div class="card-body">
+									<p class="card-text">${map.description}</p>
+									<div class="card-footer">
+									<div>
+										<a href="${map.download}" class="btn btn-primary btn-download" target="_Blank">Download Map</a>
+										<a href="#" class="help-link" data-bs-toggle="modal" data-bs-target="#installModal">
+											<div class="mt-1">
+												<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+													<path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+												</svg>
+												<span>How to Install?</span>
+											</div>
+										</a>
+									</div>
+									</div>
+								</div>
+							</div>`;
                         mapGrid.appendChild(mapElement);
                     });
 
@@ -364,20 +430,6 @@
                 filteredMapData = mapData.filter((map) => map.name.toLowerCase().includes(query));
                 currentPage = 1;
                 renderMaps();
-            });
-
-            // Tab Switching Logic
-            document.getElementById("step1-tab").addEventListener("click", () => {
-                document.getElementById("step1").classList.add("show", "active");
-                document.getElementById("step2").classList.remove("show", "active");
-                document.getElementById("step1-tab").classList.add("active");
-                document.getElementById("step2-tab").classList.remove("active");
-            });
-            document.getElementById("step2-tab").addEventListener("click", () => {
-                document.getElementById("step2").classList.add("show", "active");
-                document.getElementById("step1").classList.remove("show", "active");
-                document.getElementById("step2-tab").classList.add("active");
-                document.getElementById("step1-tab").classList.remove("active");
             });
 
             // Initial data fetch when page loads
