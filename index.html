@@ -285,16 +285,41 @@
             .help-link svg {
                 margin-right: 3px;
             }
+			.modal-content {
+                color: #08080a;
+				background-color: #dbdbdb;
+			}
+			.modal-header {
+                border-bottom: var(--bs-modal-header-border-width) solid #005e6a;
+                background-color: #919191;
+			}
+			.credits-popover {
+                --bs-popover-header-bg: #00bcd4;
+                --bs-popover-bg: #e2f3f5;
+                --bs-popover-header-color: var(--bs-white);
+				--bs-popover-border-color: #00bcd4;
+			}
+			.bs-popover-auto[data-popper-placement^=bottom]>.popover-arrow::after, .bs-popover-bottom>.popover-arrow::after {
+				border-bottom-color: #00bcd4;
+			}
+			.no-select {
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none; /* Safari */
+                -khtml-user-select: none; /* Konqueror HTML */
+                -moz-user-select: none; /* Old versions of Firefox */
+                -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+			}
         </style>
     </head>
     <body class="pb-5 mb-5">
-        <nav class="navbar navbar-expand-lg">
+        <nav class="navbar navbar-expand-lg no-select">
             <div class="container">
                 <div class="col-11">
                     <a class="navbar-brand" href="/"><img height="32" alt="Rocket League Logo" src="rl-logo.svg" width="73" /> <span>Custom Maps</span></a>
                 </div>
                 <div class="col-1">
-                    <a href="javascript:void()" id="credits">
+                    <a href="#" id="credits" data-bs-toggle="popover" data-bs-title="Map Credits <3" data-bs-content="Huge thanks to respective creators for making these awesome custom maps and for sharing them with the Rocket League community." data-bs-placement="bottom" data-bs-trigger="focus" data-bs-custom-class="credits-popover">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00bcd4" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
                             <path
                                 d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"
@@ -314,25 +339,25 @@
                     </div>
                 </div>
             </div>
-            <div class="container mb-4">
+            <div class="container mb-4 no-select">
                 <ul class="pagination justify-content-center" id="pagination"></ul>
             </div>
             <div class="row" id="mapGrid"></div>
-            <div id="loader-container" class="loader-container text-center mt-5 pt-4">
+            <div id="loader-container" class="loader-container text-center mt-5 pt-4 no-select">
                 <div id="loader" class="loader"></div>
                 <p class="loading-text mt-4">Please wait while we load maps...</p>
             </div>
-            <div id="error-message" class="error-message mt-5 pt-4" style="display: none;">
+            <div id="error-message" class="error-message mt-5 pt-4 no-select" style="display: none;">
                 <p>An error occured while loading maps. Please try again.</p>
                 <button class="reload-btn" onclick="fetchData()">Retry Loading</button>
             </div>
         </div>
 
         <!-- How to Install and Play Popup -->
-        <div class="modal fade" id="installModal" tabindex="-1" aria-labelledby="installModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal fade" id="installModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="installModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable modal-fullscreen-lg-down">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header no-select">
                         <h5 class="modal-title" id="installModalLabel">How to Install and Play Custom Maps</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -392,11 +417,10 @@
                         mapElement.innerHTML = `
 							<div class="card">
 								<h5 class="card-header">${map.name}</h5>
-								<img src="${map.thumbnail}" alt="${map.name}" loading="lazy">
+								<img src="${map.thumbnail}" alt="${map.name} Preview Thumbnail" loading="lazy" class="no-select">
 								<div class="card-body">
 									<p class="card-text">${map.description}</p>
-									<div class="card-footer">
-									<div>
+									<div class="card-footer no-select">
 										<a href="${map.download}" class="btn btn-primary btn-download" target="_Blank">Download Map</a>
 										<a href="#" class="help-link" data-bs-toggle="modal" data-bs-target="#installModal">
 											<div class="mt-1">
@@ -406,7 +430,6 @@
 												<span>How to Install?</span>
 											</div>
 										</a>
-									</div>
 									</div>
 								</div>
 							</div>`;
@@ -442,6 +465,10 @@
                 currentPage = 1;
                 renderMaps();
             });
+			
+			// Initialialize Popovers
+			const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+			const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
 
             // Initial data fetch when page loads
             fetchData();
