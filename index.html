@@ -202,7 +202,6 @@
             }
 
             #credits {
-                float: right;
                 margin-right: 20px;
             }
 
@@ -310,21 +309,24 @@
                 -ms-user-select: none; /* Internet Explorer/Edge */
                 user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 			}
+			a {
+                color: #00bcd4;
+				text-decoration: none;
+			}
         </style>
     </head>
     <body class="pb-5 mb-5">
         <nav class="navbar navbar-expand-lg no-select">
             <div class="container">
-                <div class="col-11">
+                <div class="col-8">
                     <a class="navbar-brand" href="/"><img height="32" alt="Rocket League Logo" src="rl-logo.svg" width="73" /> <span>Custom Maps</span></a>
                 </div>
-                <div class="col-1">
-                    <a href="#" id="credits" data-bs-toggle="popover" data-bs-title="Map Credits <3" data-bs-content="Huge thanks to respective creators for making these awesome custom maps and for sharing them with the Rocket League community." data-bs-placement="bottom" data-bs-trigger="focus" data-bs-custom-class="credits-popover">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00bcd4" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
-                            <path
-                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"
-                            />
-                        </svg>
+                <div class="col-4">
+                    <a href="https://drive.google.com/drive/folders/1OFlKBCh4if34CkJa8u8SwRY46EA-fsed?usp=sharing" id="google-drive" title="Link to google drive folder which hosts all maps and other required files." data-bs-toggle="tooltip" data-bs-title="Link to google drive folder which hosts all maps and other required files." style="float:right" target="_Blank">
+						Google Drive
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00bcd4" class="bi bi-folder-symlink-fill" viewBox="0 0 16 16">
+                            <path d="M13.81 3H9.828a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 6.172 1H2.5a2 2 0 0 0-2 2l.04.87a2 2 0 0 0-.342 1.311l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3M2.19 3q-.362.002-.683.12L1.5 2.98a1 1 0 0 1 1-.98h3.672a1 1 0 0 1 .707.293L7.586 3zm9.608 5.271-3.182 1.97c-.27.166-.616-.036-.616-.372V9.1s-2.571-.3-4 2.4c.571-4.8 3.143-4.8 4-4.8v-.769c0-.336.346-.538.616-.371l3.182 1.969c.27.166.27.576 0 .742"/>
+						</svg>
                     </a>
                 </div>
             </div>
@@ -332,7 +334,16 @@
 
         <div class="container mt-2 mb-5">
             <div class="row mb-3">
-                <div class="col-12 col-sm-7"><h2 class="mt-3">Download Custom RL Maps</h2></div>
+                <div class="col-12 col-sm-7">
+                    <h2 class="mt-3">
+                        Download Community Maps
+                        <a href="#" id="credits" data-bs-toggle="popover" data-bs-title="Map Credits <3" data-bs-content="Huge thanks to respective creators for making these awesome custom maps and for sharing them with the Rocket League community." data-bs-placement="bottom" data-bs-trigger="focus" data-bs-custom-class="credits-popover">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#00bcd4" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16m.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2"/>
+                            </svg>
+                        </a>
+                    </h2>
+				</div>
                 <div class="col-12 col-sm-5">
                     <div class="search-bar mb-3 mt-4 float-end">
                         <input type="text" id="searchInput" class="form-control" placeholder="Search for custom maps..." />
@@ -469,6 +480,10 @@
 			// Initialialize Popovers
 			const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
 			const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+
+			// Initialialize Tooltips
+			const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+			const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
             // Initial data fetch when page loads
             fetchData();
