@@ -441,9 +441,11 @@
                 }
             }
 
-            function renderMaps() {
+            function renderMaps(subsequent_request) {
                 const mapGrid = document.getElementById("mapGrid");
                 const pagination = document.getElementById("pagination");
+                const lazy_load_enabled = (subsequent_request === undefined || subsequent_request === false) ? 'false' :'true';
+                const lazy_load = (lazy_load_enabled === 'true') ? 'loading="lazy"' :'';
 
                 // Temporarily hide the grid while updating
                 mapGrid.style.opacity = "0";
@@ -462,7 +464,7 @@
                         mapElement.innerHTML = `
 							<div class="card">
 								<h5 class="card-header">${map.name}</h5>
-								<img src="${map.thumbnail}" alt="${map.name} Preview Thumbnail" loading="lazy" class="no-select">
+								<img src="${map.thumbnail}" alt="${map.name} Preview Thumbnail" class="no-select" ${lazy_load}>
 								<div class="card-body">
 									<p class="card-text">${map.description}</p>
 									<div class="card-footer no-select">
@@ -492,7 +494,7 @@
                         pageLink.textContent = i;
                         pageLink.addEventListener("click", () => {
                             currentPage = i;
-                            renderMaps();
+                            renderMaps(true); // Mark as subsequest request to lazy load images.
                         });
 
                         pageItem.appendChild(pageLink);
