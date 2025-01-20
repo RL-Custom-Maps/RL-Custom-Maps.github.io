@@ -424,7 +424,7 @@
 
             document.getElementById("searchInput").addEventListener("input", (event) => {
                 const query = event.target.value.toLowerCase();
-                filteredMapData = mapData.filter((map) => map.name.toLowerCase().includes(query));
+                filteredMapData = mapData.filter((map) => map.name.toLowerCase().includes(query) || map.description.toLowerCase().includes(query));
                 currentPage = 1;
                 renderMaps();
             });
